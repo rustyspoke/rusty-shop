@@ -13,6 +13,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'devise'
+
 group :development, :test do
   gem 'byebug'
 end
@@ -25,4 +28,4 @@ end
 
 gem 'rails_12factor', group: :production
 
-ruby '2.2.2p95'
+ruby '2.2.2'
