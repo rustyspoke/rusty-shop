@@ -16,9 +16,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
+gem 'draper', '~> 1.3'
 
 group :development, :test do
   gem 'byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do

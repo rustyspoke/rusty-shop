@@ -1,0 +1,7 @@
+h1 'Customers'
+
+ul do
+  customers.each do |customer|
+    li(h.link_to customer)
+  end
+end
