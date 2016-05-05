@@ -1,0 +1,5 @@
+<h1>Hi <%= @customer.name %></h1>
+
+<%= form_for @customer.visits.new do |f| %>
+  <%=  f.input :reason %>
+<% end %>
