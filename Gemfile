@@ -17,6 +17,8 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
+gem 'formtastic', '~> 3.0'
+gem 'selectize-rails'
 
 group :development, :test do
   gem 'byebug'

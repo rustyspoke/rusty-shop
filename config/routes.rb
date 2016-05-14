@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :customers do
-    resources :visits
-  end
+  resources :customers
+  resources :visits
 end

@@ -1,5 +1,5 @@
-<h1>Hi <%= @customer.name %></h1>
-
-<%= form_for @customer.visits.new do |f| %>
-  <%=  f.input :reason %>
+<%= semantic_form_for @new_visit do |f| %>
+  <%= f.input :customer, as: :select, collection: @customers.options_for_select %>
+  <%= f.input :reason %>
+  <%= f.submit %>
 <% end %>
