@@ -2,7 +2,9 @@ ActiveAdmin.register Customer do
 
   menu priority: 1
 
-  index do
+  filter :name
+
+  index download_links: false do
     column 'Name' do |customer|
       link_to customer.name, admin_customer_path(customer)
     end
@@ -21,4 +23,5 @@ ActiveAdmin.register Customer do
   actions :all, except: [:destroy]
   permit_params :name, :email, :phone
 
+  config.batch_actions = false
 end
