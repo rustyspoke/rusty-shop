@@ -4,7 +4,8 @@ class CreateVisits < ActiveRecord::Migration
       t.belongs_to :customer
       t.string :slug
       t.string :reason
-      t.timestamps null: false
+      t.datetime :arrived_at
+      t.datetime :departed_at
     end
   end
 end

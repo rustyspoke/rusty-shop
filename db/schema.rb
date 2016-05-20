@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160428154215) do
     t.integer  "customer_id"
     t.string   "slug"
     t.string   "reason"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "arrived_at"
+    t.datetime "departed_at"
   end
 
 end
