@@ -2,7 +2,7 @@ ActiveAdmin.register Customer do
 
   menu priority: 1
 
-  filter :name
+  filter :name, as: :ajax_select, data: { search_fields: [:name], limit: 7 }
 
   index download_links: false do
     column 'Name' do |customer|
@@ -20,7 +20,6 @@ ActiveAdmin.register Customer do
     actions
   end
 
-  actions :all, except: [:destroy]
   permit_params :name, :email, :phone
 
   config.batch_actions = false
