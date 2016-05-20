@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160428154215) do
 
   create_table "visits", force: :cascade do |t|
     t.integer  "customer_id"
+    t.string   "slug"
     t.string   "reason"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

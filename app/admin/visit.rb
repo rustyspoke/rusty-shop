@@ -5,6 +5,13 @@ ActiveAdmin.register Visit do
 
   filter :customer, as: :ajax_select, data: { search_fields: [:name], limit: 7 }
 
-  permit_params :reason
+  form title: 'Visit' do |f|
+    inputs 'Details' do
+      input :customer
+      input :reason
+    end
+    actions
+  end
 
+  permit_params :reason
 end
