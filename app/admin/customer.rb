@@ -11,6 +11,10 @@ ActiveAdmin.register Customer do
     actions
   end
 
+  show do
+    active_admin_comments
+  end
+
   form title: 'Customer' do |f|
     inputs 'Details' do
       input :name
@@ -25,6 +29,8 @@ ActiveAdmin.register Customer do
       li link_to "Visits",    admin_customer_visits_path(customer)
     end
   end
+
+  actions :all, except: [:destroy]
 
   permit_params :name, :email, :phone
 

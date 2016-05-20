@@ -1,15 +1,19 @@
 ActiveAdmin.register Visit do
   include ActiveAdmin::AjaxFilter
+  decorate_with VisitDecorator
 
   belongs_to :customer
 
   filter :customer, as: :ajax_select, data: { search_fields: [:name], limit: 7 }
 
   index download_links: false do
+    column :reason
     column :arrived_at
     column :departed_at
-    column :reason
     actions
+  end
+
+  show title: :title do
   end
 
   form title: 'Visit' do |f|

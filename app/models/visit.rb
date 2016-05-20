@@ -11,6 +11,10 @@ class Visit < ActiveRecord::Base
     Time.current.in_time_zone('Arizona').strftime '%y-%m-%d_%H:%M'
   end
 
+  def duration
+    departed_at - arrived_at
+  end
+
   private
 
   def set_arrived_at
