@@ -20,6 +20,12 @@ ActiveAdmin.register Customer do
     actions
   end
 
+  sidebar "Details", only: [:show, :edit] do
+    ul do
+      li link_to "Visits",    admin_customer_visits_path(customer)
+    end
+  end
+
   permit_params :name, :email, :phone
 
   config.batch_actions = false
