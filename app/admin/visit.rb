@@ -14,12 +14,20 @@ ActiveAdmin.register Visit do
   end
 
   show title: :title do
-  end
+      attributes_table do
+        row :arrived_at
+        row :departed_at
+        row :reason
+      end
+      active_admin_comments
+    end
 
   form title: 'Visit' do |f|
     inputs 'Details' do
       input :customer
       input :reason
+      input :arrived_at, as: :time_picker
+      input :departed_at, as: :time_picker
     end
     actions
   end

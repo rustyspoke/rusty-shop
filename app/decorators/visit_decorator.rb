@@ -3,7 +3,11 @@ class VisitDecorator < Draper::Decorator
   delegate_all
 
   def title
-    arrived_at
+    "#{date} (#{model.reason})"
+  end
+
+  def date
+    l model.arrived_at.to_date, format: :short
   end
 
   def departed_at

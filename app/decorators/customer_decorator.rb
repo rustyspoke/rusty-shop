@@ -1,4 +1,7 @@
 class CustomerDecorator < Draper::Decorator
+  delegate_all
+  decorates_association :visits
+
   def name
     object.name
   end

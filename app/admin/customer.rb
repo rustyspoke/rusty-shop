@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+  decorate_with CustomerDecorator
 
   menu priority: 1
 
