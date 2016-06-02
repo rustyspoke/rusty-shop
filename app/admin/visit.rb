@@ -4,9 +4,7 @@ ActiveAdmin.register Visit do
 
   belongs_to :customer
 
-  filter :customer, as: :ajax_select, data: { search_fields: [:name], limit: 7 }
-
-  index download_links: false do
+  index download_links: false, title: proc { "#{@customer.name}'s visits" } do
     column :reason
     column :arrived_at
     column :departed_at
