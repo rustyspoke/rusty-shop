@@ -1,0 +1,5 @@
+<% AdminUser.all.each do |admin| %>
+  <p>
+    <%= link_to admin.name, "/switch_user?scope_identifier=admin_user_#{admin.id}", class: 'switch-user' %>
+  </p>
+<% end %>

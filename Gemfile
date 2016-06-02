@@ -18,6 +18,8 @@ gem 'activeadmin-ajax_filter'
 gem 'flattened_active_admin'
 
 gem 'devise'
+gem 'switch_user'
+
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
 gem 'formtastic', '~> 3.0'
