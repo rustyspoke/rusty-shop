@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Lockup::Engine, at: '/lockup'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   get 'switch_user' => 'switch_user#set_current_user'
