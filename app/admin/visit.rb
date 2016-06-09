@@ -2,6 +2,8 @@ ActiveAdmin.register Visit do
   include ActiveAdmin::AjaxFilter
   decorate_with VisitDecorator
 
+  menu priority: 1
+
   belongs_to :customer
 
   index download_links: false, title: proc { "#{@customer.name}'s visits" } do
@@ -12,13 +14,13 @@ ActiveAdmin.register Visit do
   end
 
   show title: :title do
-      attributes_table do
-        row :arrived_at
-        row :departed_at
-        row :reason
-      end
-      active_admin_comments
+    attributes_table do
+      row :arrived_at
+      row :departed_at
+      row :reason
     end
+    active_admin_comments
+  end
 
   form title: 'Visit' do |f|
     inputs 'Details' do
@@ -27,6 +29,10 @@ ActiveAdmin.register Visit do
       input :departed_at, as: :time_picker
     end
     actions
+  end
+
+  before_build do |visit|
+    visit.arrived_at = Time.current
   end
 
   member_action :finish, method: :put do
