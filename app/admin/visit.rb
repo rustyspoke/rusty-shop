@@ -41,7 +41,7 @@ ActiveAdmin.register Visit do
     link_to 'Finish', finish_admin_customer_visit_path(id: resource.id), method: :put if resource.departed_at.nil?
   end
 
-  permit_params :reason
+  permit_params :reason, :arrived_at, :departed_at
 
   config.batch_actions = false
 end
