@@ -9,7 +9,10 @@ ActiveAdmin.register Customer do
     column 'Name' do |customer|
       link_to customer.name, admin_customer_path(customer)
     end
-    actions
+
+    actions defaults: false do |customer|
+      link_to 'New visit', new_admin_customer_visit_path(customer_id: customer.id)
+    end
   end
 
   show do
