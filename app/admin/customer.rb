@@ -36,4 +36,12 @@ ActiveAdmin.register Customer do
   permit_params :name, :email, :phone
 
   config.batch_actions = false
+
+  controller do
+    def create
+      super do |format|
+        redirect_to admin_customer_visits_path(resource) and return if resource.valid?
+      end
+    end
+  end
 end
