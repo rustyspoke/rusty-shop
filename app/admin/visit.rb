@@ -22,7 +22,6 @@ ActiveAdmin.register Visit do
 
   form title: 'Visit' do |f|
     inputs 'Details' do
-      input :customer
       input :reason
       input :arrived_at, as: :time_picker
       input :departed_at, as: :time_picker
