@@ -7,6 +7,12 @@ class Visit < ActiveRecord::Base
 
   belongs_to :customer
 
+  validate :only_one_ongoing, on: :create
+
+  def self.ongoing
+    where departed_at: nil
+  end
+
   def generate_slug
     Time.current.in_time_zone('Arizona').strftime '%y-%m-%d_%H:%M'
   end
@@ -21,4 +27,7 @@ class Visit < ActiveRecord::Base
     self.arrived_at = Time.current
   end
 
+  def only_one_ongoing
+    errors.add :base, 'only one ongoing visit allowed' if customer.visits.ongoing.present?
+  end
 end
