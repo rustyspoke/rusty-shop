@@ -20,6 +20,10 @@ ActiveAdmin.register Customer do
   end
 
   show do
+    attributes_table do
+      row :latest_visit
+      row :work_trade_available
+    end
     active_admin_comments
   end
 

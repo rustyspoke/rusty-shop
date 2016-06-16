@@ -13,6 +13,14 @@ class Visit < ActiveRecord::Base
     where departed_at: nil
   end
 
+  def self.work_trade
+    where is_worktrade: true
+  end
+
+  def self.total_duration
+    sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f.seconds
+  end
+
   def generate_slug
     Time.current.in_time_zone('Arizona').strftime '%y-%m-%d_%H:%M'
   end
