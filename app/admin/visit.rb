@@ -10,6 +10,7 @@ ActiveAdmin.register Visit do
     column :reason
     column :arrived_at
     column :departed_at
+    column :is_worktrade
     actions
   end
 
@@ -18,6 +19,7 @@ ActiveAdmin.register Visit do
       row :arrived_at
       row :departed_at
       row :reason
+      row :is_worktrade
     end
     active_admin_comments
   end
@@ -27,6 +29,7 @@ ActiveAdmin.register Visit do
       input :reason
       input :arrived_at, as: :time_picker
       input :departed_at, as: :time_picker
+      input :is_worktrade
     end
     actions
   end
@@ -46,7 +49,7 @@ ActiveAdmin.register Visit do
     link_to 'Finish', finish_admin_customer_visit_path(id: resource.id), method: :put if resource.departed_at.nil?
   end
 
-  permit_params :reason, :arrived_at, :departed_at
+  permit_params :reason, :arrived_at, :departed_at, :is_worktrade
 
   config.batch_actions = false
 end

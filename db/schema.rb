@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428154215) do
+ActiveRecord::Schema.define(version: 20160616013828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160428154215) do
     t.string   "reason"
     t.datetime "arrived_at"
     t.datetime "departed_at"
+    t.boolean  "is_worktrade", default: false, null: false
   end
 
 end
