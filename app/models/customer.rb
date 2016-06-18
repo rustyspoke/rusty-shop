@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
   include FriendlyId
   friendly_id :name, use: [:slugged, :history]
+  has_paper_trail
 
   has_many :visits
   has_many :purchases

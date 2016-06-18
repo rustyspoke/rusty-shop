@@ -21,6 +21,7 @@ gem 'flattened_active_admin'
 
 gem 'devise'
 gem 'switch_user'
+gem 'paper_trail', '~> 5.1.1'
 
 gem 'delayed_job_active_record'
 

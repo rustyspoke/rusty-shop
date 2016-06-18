@@ -1,5 +1,6 @@
 class Visit < ActiveRecord::Base
   extend FriendlyId
+  has_paper_trail
 
   before_create :set_arrived_at
 
