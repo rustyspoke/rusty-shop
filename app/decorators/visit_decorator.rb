@@ -17,4 +17,8 @@ class VisitDecorator < Draper::Decorator
   def arrived_at
     l model.arrived_at, format: :short
   end
+
+  def duration
+    h.format_duration model.duration
+  end
 end

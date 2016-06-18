@@ -19,12 +19,16 @@ class CustomerDecorator < Draper::Decorator
     new_today ? "Glad to have you here #{ name }" : "Welcome back #{ name }"
   end
 
+  def latest_visit_date
+    return 'None' unless object.latest_visit
+
+    date = object.latest_visit.date
+    date == Date.current ? 'Today' : h.l(date)
+  end
+
   def work_trade_available
     return nil unless object.visits.work_trade.present?
-    available = object.total_work_trade_duration - object.total_purchases_cost
-    suffix = object.current_visit ? 'ongoing' : "last on #{h.l(object.latest_visit.arrived_at.to_date)}"
-
-    "#{Time.at(available).utc.strftime('%H:%M:%S')} (#{suffix})"
+    h.format_duration(object.total_work_trade_duration - object.total_purchases_cost)
   end
 
 end

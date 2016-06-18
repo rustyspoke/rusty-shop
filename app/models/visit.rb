@@ -21,12 +21,20 @@ class Visit < ActiveRecord::Base
     sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f.seconds
   end
 
+  def name
+    date
+  end
+
   def generate_slug
     Time.current.in_time_zone('Arizona').strftime '%y-%m-%d_%H:%M'
   end
 
+  def date
+    arrived_at.to_date
+  end
+
   def duration
-    departed_at - arrived_at
+    (departed_at - arrived_at).seconds
   end
 
   private

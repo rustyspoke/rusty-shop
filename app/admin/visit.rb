@@ -10,6 +10,7 @@ ActiveAdmin.register Visit do
     column :reason
     column :arrived_at
     column :departed_at
+    column :duration
     column :is_worktrade
     actions
   end
