@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :visits
+  resources :purchases
 end

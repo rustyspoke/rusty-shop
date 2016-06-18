@@ -21,7 +21,7 @@ class CustomerDecorator < Draper::Decorator
 
   def work_trade_available
     return nil unless object.visits.work_trade.present?
-    available = total_work_trade_duration
+    available = object.total_work_trade_duration - object.total_purchases_cost
     suffix = object.current_visit ? 'ongoing' : "last on #{h.l(object.latest_visit.arrived_at.to_date)}"
 
     "#{Time.at(available).utc.strftime('%H:%M:%S')} (#{suffix})"

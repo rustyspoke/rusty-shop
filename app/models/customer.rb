@@ -3,6 +3,7 @@ class Customer < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :history]
 
   has_many :visits
+  has_many :purchases
 
   def current_visit
     visits.ongoing.first
@@ -14,5 +15,9 @@ class Customer < ActiveRecord::Base
 
   def total_work_trade_duration
     visits.work_trade.total_duration
+  end
+
+  def total_purchases_cost
+    purchases.total_cost
   end
 end

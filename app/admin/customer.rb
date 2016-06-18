@@ -39,6 +39,7 @@ ActiveAdmin.register Customer do
   sidebar "Details", only: [:show, :edit] do
     ul do
       li link_to "Visits",    admin_customer_visits_path(customer)
+      li link_to "Purchases",    admin_customer_purchases_path(customer)
     end
   end
 
