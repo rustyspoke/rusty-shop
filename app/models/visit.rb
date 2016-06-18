@@ -21,6 +21,10 @@ class Visit < ActiveRecord::Base
     sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f.seconds
   end
 
+  def end_now
+    update_attributes departed_at: Time.current
+  end
+
   def name
     date
   end
