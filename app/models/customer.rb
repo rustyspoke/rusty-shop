@@ -4,6 +4,7 @@ class Customer < ActiveRecord::Base
   has_paper_trail
 
   has_many :visits
+  has_many :holds
   has_many :purchases
 
   def current_visit

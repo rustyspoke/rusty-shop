@@ -3,7 +3,6 @@ ActiveAdmin.register Purchase do
   config.batch_actions = false
 
   form title: 'Visit' do |f|
-
     panel 'Work trade available' do
       f.object.customer.decorate.work_trade_available
     end
