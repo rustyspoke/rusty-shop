@@ -1,6 +1,8 @@
 class HoldDecorator < Draper::Decorator
   delegate_all
 
+  delegate :name, to: :customer, prefix: true
+
   def name
     "#{object.description} (#{object.tag})"
   end
