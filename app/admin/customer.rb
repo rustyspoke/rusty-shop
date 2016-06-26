@@ -14,9 +14,12 @@ ActiveAdmin.register Customer do
 
     actions defaults: false do |customer|
       if customer.current_visit.present?
-        link_to 'Edit current visit', edit_admin_customer_visit_path(customer_id: customer.id, id: customer.current_visit.id)
+        item 'Finish', finish_admin_customer_visit_path(customer_id: customer.id, id: customer.current_visit.id), method: :put
+        span ' or '
+        item 'edit', edit_admin_customer_visit_path(customer_id: customer.id, id: customer.current_visit.id)
+        span 'current visit'
       else
-        link_to 'New visit', new_admin_customer_visit_path(customer_id: customer.id)
+        item 'Create new visit', new_admin_customer_visit_path(customer_id: customer.id)
       end
     end
   end

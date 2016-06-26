@@ -14,7 +14,9 @@ ActiveAdmin.register CurrentVisit do
     column :is_worktrade
 
     actions defaults: false do |visit|
-      link_to 'Edit', edit_admin_customer_visit_path(customer_id: visit.customer.id, id: visit.id)
+      item 'Finish', finish_admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id), method: :put
+      span ' or '
+      item 'edit', edit_admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id)
     end
   end
 end
