@@ -2,6 +2,8 @@ class VisitDecorator < Draper::Decorator
   decorates_association :customer
   delegate_all
 
+  delegate :name, to: :customer, prefix: true
+
   def title
     "#{date} (#{model.reason})"
   end
