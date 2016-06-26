@@ -3,7 +3,7 @@ ActiveAdmin.register Customer do
 
   menu priority: 1
 
-  filter :name, as: :ajax_select, data: { search_fields: [:name], limit: 7 }
+  filter :name
 
   index download_links: false do
     column 'Name' do |customer|

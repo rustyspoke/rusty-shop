@@ -1,5 +1,4 @@
 ActiveAdmin.register Visit do
-  include ActiveAdmin::AjaxFilter
   decorate_with VisitDecorator
 
   menu priority: 1

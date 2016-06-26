@@ -16,7 +16,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'lockup'
 
 gem 'activeadmin', '~> 1.0.0.pre2'
-gem 'activeadmin-ajax_filter'
 gem 'flattened_active_admin'
 
 gem 'devise'
@@ -28,7 +27,6 @@ gem 'delayed_job_active_record'
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
 gem 'formtastic', '~> 3.0'
-gem 'selectize-rails'
 
 group :development, :test do
   gem 'byebug'
