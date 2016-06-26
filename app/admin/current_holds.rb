@@ -10,6 +10,10 @@ ActiveAdmin.register CurrentHold do
     column :kind
     column :description
     column :tag
-    actions
+    actions defaults: false do |hold|
+      item 'View', admin_customer_hold_path(customer_id: hold.customer_id, id: hold.id)
+      span 'or'
+      item 'Edit', edit_admin_customer_hold_path(customer_id: hold.customer_id, id: hold.id)
+    end
   end
 end
