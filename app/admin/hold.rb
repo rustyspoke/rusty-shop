@@ -10,7 +10,7 @@ ActiveAdmin.register Hold do
     column :description
     column :tag
     column :status
-    actions
+    actions except: :delete
   end
 
   show do

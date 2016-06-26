@@ -5,6 +5,9 @@ ActiveAdmin.register Visit do
 
   belongs_to :customer
 
+  config.batch_actions = false
+  actions :all, except: [:destroy]
+
   index download_links: false, title: proc { "#{@customer.name}'s visits" } do
     column :reason
     column :arrived_at

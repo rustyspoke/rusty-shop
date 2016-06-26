@@ -3,7 +3,7 @@ ActiveAdmin.register CurrentVisit do
 
   menu priority: 2
 
-  config.clear_action_items!
+  config.batch_actions = false
   actions :all, except: [:new]
 
   index download_links: false do
