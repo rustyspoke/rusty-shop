@@ -5,6 +5,8 @@ ActiveAdmin.register Customer do
 
   filter :name
 
+  config.sort_order = 'name_asc'
+
   index download_links: false do
     column 'Name' do |customer|
       link_to customer.name, admin_customer_path(customer)
