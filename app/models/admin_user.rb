@@ -3,8 +3,4 @@ class AdminUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
-
-  def name
-    email.split('@').first.titleize
-  end
 end
