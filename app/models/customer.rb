@@ -3,6 +3,8 @@ class Customer < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :history]
   has_paper_trail
 
+  validates :name, presence: true
+
   has_many :visits
   has_many :holds
   has_many :purchases
