@@ -43,7 +43,7 @@ ActiveAdmin.register Visit do
 
   member_action :finish, method: :put do
     resource.update_attribute :departed_at, Time.current
-    redirect_to resource_path, notice: "Visit finished"
+    redirect_to :back, notice: "Visit finished"
   end
 
   action_item :finish, only: [:show, :edit] do
