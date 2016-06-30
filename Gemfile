@@ -27,6 +27,7 @@ gem 'delayed_job_active_record'
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
 gem 'formtastic', '~> 3.0'
+gem 'active_admin_datetimepicker'
 
 group :development, :test do
   gem 'byebug'

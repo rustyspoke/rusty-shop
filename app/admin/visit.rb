@@ -30,8 +30,8 @@ ActiveAdmin.register Visit do
   form title: 'Visit' do |f|
     inputs 'Details' do
       input :reason
-      input :arrived_at, as: :datetime_picker
-      input :departed_at, as: :datetime_picker
+      input :arrived_at, as: :date_time_picker, timepicker_options: {  minute_stepping: 15 }
+      input :departed_at, as: :date_time_picker
       input :is_worktrade
     end
     actions
