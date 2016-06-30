@@ -46,8 +46,6 @@ ActiveAdmin.register Visit do
     redirect_to resource_path, notice: "Visit finished"
   end
 
-  actions :all, except: [:destroy]
-
   action_item :finish, only: [:show, :edit] do
     link_to 'Finish', finish_admin_customer_visit_path(id: resource.id), method: :put if resource.departed_at.nil?
   end
