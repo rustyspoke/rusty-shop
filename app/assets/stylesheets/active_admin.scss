@@ -9,3 +9,17 @@ body {
 a.switch-user {
   font-size: 200%;
 }
+
+.text.input.required {
+  border-width: 2px;
+  border-style: solid;
+  color: black;
+}
+
+table.index_table {
+  tr,td {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+  }
+}
