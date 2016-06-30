@@ -8,6 +8,7 @@ class Visit < ActiveRecord::Base
 
   belongs_to :customer
 
+  validates :reason, presence: true
   validate :only_one_ongoing, on: :create
 
   def self.ongoing
