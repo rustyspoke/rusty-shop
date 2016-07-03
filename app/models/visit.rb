@@ -40,7 +40,7 @@ class Visit < ActiveRecord::Base
   end
 
   def duration
-    ((Time.current || departed_at) - arrived_at).seconds
+    ((departed_at || Time.current) - arrived_at).seconds
   end
 
   private
