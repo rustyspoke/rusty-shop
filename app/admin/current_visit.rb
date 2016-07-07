@@ -7,7 +7,7 @@ ActiveAdmin.register CurrentVisit do
   actions :all, except: [:new]
 
   index download_links: false do
-    column :customer_name
+    column :customer
     column :reason
     column :arrived_at
     column :duration

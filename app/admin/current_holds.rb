@@ -6,7 +6,7 @@ ActiveAdmin.register CurrentHold do
   actions :all, except: [:destroy]
 
   index download_links: false do
-    column :customer_name
+    column :customer
     column :kind
     column :description
     column :tag
