@@ -6,6 +6,10 @@ class CustomerDecorator < Draper::Decorator
     object.name
   end
 
+  def title
+    name
+  end
+
   def to_param
     object.to_param
   end
