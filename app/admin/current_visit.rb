@@ -17,6 +17,8 @@ ActiveAdmin.register CurrentVisit do
     actions defaults: false do |visit|
       item 'Finish', finish_admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id), method: :put
       span ' or '
+      item 'view', admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id)
+      span ' or '
       item 'edit', edit_admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id)
     end
   end
