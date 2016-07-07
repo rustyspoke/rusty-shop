@@ -28,6 +28,8 @@ ActiveAdmin.register Customer do
     attributes_table do
       row :latest_visit
       row :work_trade_available
+      row :email
+      row :phone
     end
     active_admin_comments
   end
