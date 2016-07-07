@@ -12,6 +12,7 @@ ActiveAdmin.register CurrentVisit do
     column :arrived_at
     column :duration
     column :is_worktrade
+    column :toolbox
 
     actions defaults: false do |visit|
       item 'Finish', finish_admin_customer_visit_path(customer_id: visit.customer_id, id: visit.id), method: :put

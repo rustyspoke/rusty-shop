@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626175337) do
+ActiveRecord::Schema.define(version: 20160707003114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,12 @@ ActiveRecord::Schema.define(version: 20160626175337) do
     t.string  "cost",        null: false
   end
 
+  create_table "toolboxes", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false
     t.integer  "item_id",    null: false
@@ -123,6 +129,7 @@ ActiveRecord::Schema.define(version: 20160626175337) do
     t.datetime "arrived_at"
     t.datetime "departed_at"
     t.boolean  "is_worktrade", default: false, null: false
+    t.integer  "toolbox_id"
   end
 
 end

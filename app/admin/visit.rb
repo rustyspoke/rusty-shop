@@ -23,6 +23,7 @@ ActiveAdmin.register Visit do
       row :departed_at
       row :reason
       row :is_worktrade
+      row :toolbox
     end
     active_admin_comments
   end
@@ -33,6 +34,7 @@ ActiveAdmin.register Visit do
       input :arrived_at, as: :date_time_picker, timepicker_options: {  minute_stepping: 15 }
       input :departed_at, as: :date_time_picker
       input :is_worktrade
+      input :toolbox, as: :select, collection: Toolbox.all.map {|t| [t.name, t.id] }, include_blank: true
     end
     actions
   end
@@ -50,7 +52,7 @@ ActiveAdmin.register Visit do
     link_to 'Finish', finish_admin_customer_visit_path(id: resource.id), method: :put if resource.departed_at.nil?
   end
 
-  permit_params :reason, :arrived_at, :departed_at, :is_worktrade
+  permit_params :reason, :arrived_at, :departed_at, :is_worktrade, :toolbox_id
 
   config.batch_actions = false
 end

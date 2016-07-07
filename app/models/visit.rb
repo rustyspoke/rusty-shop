@@ -7,9 +7,11 @@ class Visit < ActiveRecord::Base
   friendly_id :generate_slug, use: :slugged
 
   belongs_to :customer
+  belongs_to :toolbox
 
   validates :reason, presence: true
   validate :only_one_ongoing, on: :create
+  validate :only_one_toolbox, on: :create
 
   def self.ongoing
     where departed_at: nil
@@ -51,5 +53,12 @@ class Visit < ActiveRecord::Base
 
   def only_one_ongoing
     errors.add :base, 'only one ongoing visit allowed' if customer.visits.ongoing.present?
+  end
+
+  def only_one_toolbox
+    return if toolbox.nil?
+
+    other_visit = Visit.ongoing.find_by toolbox: toolbox
+    errors.add :toolbox, "is currently checked out by #{other_visit.customer.name}" if other_visit.present?
   end
 end

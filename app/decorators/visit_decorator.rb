@@ -23,4 +23,15 @@ class VisitDecorator < Draper::Decorator
   def duration
     h.format_duration model.duration
   end
+
+  def toolbox
+    toolbox = model.toolbox
+    return nil unless toolbox.present?
+
+    h.arbre do
+      span class: 'status_tag', style: "background:#{toolbox.name}" do
+        toolbox.name
+      end
+    end
+  end
 end
