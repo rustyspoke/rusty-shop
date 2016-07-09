@@ -29,6 +29,8 @@ gem 'draper', '~> 1.3'
 gem 'formtastic', '~> 3.0'
 gem 'active_admin_datetimepicker'
 
+gem 'tod'
+
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
