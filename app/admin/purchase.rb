@@ -1,4 +1,6 @@
 ActiveAdmin.register Purchase do
+  menu priority: 3
+
   belongs_to :customer
   config.batch_actions = false
 

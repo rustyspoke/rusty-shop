@@ -1,5 +1,6 @@
 ActiveAdmin.register Hold do
   decorate_with HoldDecorator
+  menu priority: 2
 
   belongs_to :customer
   config.batch_actions = false

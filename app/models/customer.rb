@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
   has_many :visits
   has_many :holds
   has_many :purchases
+  has_many :donations
 
   def current_visit
     visits.ongoing.first
