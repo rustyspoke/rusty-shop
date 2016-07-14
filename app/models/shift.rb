@@ -2,6 +2,8 @@ require 'tod/core_extensions'
 class Shift < ActiveRecord::Base
   has_and_belongs_to_many :admin_users
 
+  after_create :enqueue_close_shop
+
   def self.current
     wday_shifts = {
       6 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(15)),
@@ -18,5 +20,11 @@ class Shift < ActiveRecord::Base
 
     today = Date.current
     self.find_or_create_by beginning_at: hours.beginning.on(today), ending_at: hours.ending.on(today)
+  end
+
+  private
+
+  def enqueue_close_shop
+    Delayed::Job.enqueue CloseShopJob.new, run_at: ending_at
   end
 end
