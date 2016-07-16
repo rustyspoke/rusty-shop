@@ -1,12 +1,13 @@
 require 'tod/core_extensions'
 class Shift < ActiveRecord::Base
   has_and_belongs_to_many :admin_users
+  has_and_belongs_to_many :visits
 
   after_create :enqueue_close_shop
 
   def self.current
     wday_shifts = {
-      6 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(15)),
+      6 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(20)),
       0 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(15)),
       3 => Tod::Shift.new(Tod::TimeOfDay.new(17), Tod::TimeOfDay.new(20))
     }

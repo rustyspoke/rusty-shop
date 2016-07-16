@@ -9,6 +9,8 @@ class Visit < ActiveRecord::Base
   belongs_to :customer
   belongs_to :toolbox
 
+  has_and_belongs_to_many :shifts
+
   validates :reason, presence: true
   validate :only_one_ongoing, on: :create
   validate :only_one_toolbox, on: :create

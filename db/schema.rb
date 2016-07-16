@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709194035) do
+ActiveRecord::Schema.define(version: 20160716221532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,5 +151,14 @@ ActiveRecord::Schema.define(version: 20160709194035) do
     t.boolean  "is_worktrade", default: false, null: false
     t.integer  "toolbox_id"
   end
+
+
+  create_view :shifts_visits,  sql_definition: <<-SQL
+      SELECT shifts.id AS shift_id,
+      visits.id AS visit_id
+     FROM shifts,
+      visits
+    WHERE ((visits.arrived_at >= shifts.beginning_at) AND (visits.arrived_at <= shifts.ending_at));
+  SQL
 
 end
