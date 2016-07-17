@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716221532) do
+ActiveRecord::Schema.define(version: 20160717213609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20160716221532) do
       visits.id AS visit_id
      FROM shifts,
       visits
-    WHERE ((visits.arrived_at >= shifts.beginning_at) AND (visits.arrived_at <= shifts.ending_at));
+    WHERE "overlaps"((visits.arrived_at)::timestamp with time zone, COALESCE((visits.departed_at)::timestamp with time zone, now()), (shifts.beginning_at)::timestamp with time zone, (shifts.ending_at)::timestamp with time zone);
   SQL
 
 end
