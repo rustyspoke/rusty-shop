@@ -2,7 +2,7 @@ CloseShopJob = Struct.new(:shift_id) do
   def perform
     end_ongoing_visits
 
-    ShiftMailer.close_shop shift
+    ShiftMailer.close_shop(shift).deliver_now
   end
 
   private
