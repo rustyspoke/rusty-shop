@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @shift.date %> shift report</h1>
+    <p>
+      <%= @shift.staff_names %> were present.
+    </p>
+    <p>
+    We served <b><%= @visits.customer_count %></b> customers:
+    <i><%= @visits.customer_names %></i>
+    </p>
+
+    <p>
+    <b><%= @visits.work_trade_earned %></b> work trade was earned, by:
+    <i><%= @visits.worktrade_customer_names %></i>
+    </p>
+  </body>
+</html>
