@@ -1,6 +1,6 @@
 module ApplicationHelper
   def format_duration(duration)
-    Time.at(duration).utc.strftime('%H:%M:%S')
+    Time.at(duration).utc.strftime('%H hrs %M mins')
   end
 
   # https://github.com/activeadmin/activeadmin/issues/2874#issuecomment-32522163

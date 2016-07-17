@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @visit.date %> work trade receipt from Rusty Spoke</h1>
+
+    <p>
+    Hi
+    <%= @customer.name %>.
+    </p>
+
+    <p>
+    This recipt confirms you completed
+    <b><%= @visit.duration %></b>
+    of work trade on
+    <b><%= @visit.date %></b>.
+    </p>
+
+    <p>
+    You now have
+    <b><%= @customer.work_trade_available %></b>
+    work trade available.
+    </p>
+    <p>
+    Please contact a member of staff during our next opening hours if you believe this is incorrect.
+    </p>
+  </body>
+</html>
+

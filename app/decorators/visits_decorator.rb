@@ -9,7 +9,7 @@ class VisitsDecorator < Draper::CollectionDecorator
   end
 
   def work_trade_earned
-    Time.at(object.work_trade.total_duration).utc.strftime('%H:%M:%S')
+    h.format_duration object.work_trade.total_duration
   end
 
   def worktrade_customer_names

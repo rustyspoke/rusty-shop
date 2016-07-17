@@ -3,6 +3,7 @@ class Visit < ActiveRecord::Base
   has_paper_trail
 
   before_create :set_arrived_at
+  after_save :enqueue_finish_visit_job, if: :departed_at_changed?
 
   friendly_id :generate_slug, use: :slugged
 
@@ -62,5 +63,9 @@ class Visit < ActiveRecord::Base
 
     other_visit = Visit.ongoing.find_by toolbox: toolbox
     errors.add :toolbox, "is currently checked out by #{other_visit.customer.name}" if other_visit.present?
+  end
+
+  def enqueue_finish_visit_job
+    Delayed::Job.enqueue FinishWorktradeVisitJob.new(self.id) if is_worktrade?
   end
 end
