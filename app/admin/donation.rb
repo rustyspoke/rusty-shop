@@ -5,7 +5,7 @@ ActiveAdmin.register Donation do
 
   belongs_to :customer
 
-  actions :all, except: [:show]
+  actions :all
   config.batch_actions = false
 
   form title: 'Donation' do |f|
@@ -20,6 +20,17 @@ ActiveAdmin.register Donation do
     column :created_at
     column :description
     column :value
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :created_at
+      row :description
+      row :value
+    end
+
+    active_admin_comments
   end
 
   permit_params :description, :value, :customer_id
