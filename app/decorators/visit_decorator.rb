@@ -5,7 +5,7 @@ class VisitDecorator < Draper::Decorator
   delegate :name, to: :customer, prefix: true
 
   def title
-    "#{date} (#{model.reason})"
+    "#{customer_name}'s #{date} visit (#{model.reason})"
   end
 
   def date
