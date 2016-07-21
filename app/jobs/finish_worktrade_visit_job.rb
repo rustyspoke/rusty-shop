@@ -7,9 +7,12 @@ FinishWorktradeVisitJob = Struct.new(:visit_id) do
 
   def send_receipt
     return unless ENV['SEND_WORKTRADE_RECEIPTS'].present?
-    return unless visit.customer.email.present?
 
-    VisitMailer.worktrade_receipt(visit).deliver_now
+    if visit.customer.email.present?
+      VisitMailer.worktrade_receipt(visit).deliver_now
+    elsif visit.customer.number.present?
+      VisitTexter.worktrade_receipt(visit)
+    end
   end
 
   def visit

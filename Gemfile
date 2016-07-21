@@ -29,10 +29,12 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
 gem 'formtastic', '~> 3.0'
 gem 'active_admin_datetimepicker'
+gem 'twilio-ruby', '~> 4.11.1'
 
 gem 'tod'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
