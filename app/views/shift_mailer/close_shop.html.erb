@@ -17,5 +17,19 @@
     <b><%= @visits.work_trade_earned %></b> work trade was earned, by:
     <i><%= @visits.worktrade_customer_names %></i>
     </p>
+
+    <p>
+    <h2>Comments</h2>
+    <table>
+      <tr>
+      <th>Who</th><th>What</th><th>Comment</th>
+      </tr>
+      <% @comments.each do |comment|%>
+        <tr>
+          <td><%= comment.author_name %></td><td><%= comment.resource_name %></td><td><%= comment.body %></td>
+        </tr>
+      <% end %>
+    </table>
+    </p>
   </body>
 </html>
