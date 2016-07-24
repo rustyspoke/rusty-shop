@@ -40,7 +40,7 @@ ActiveAdmin.register Visit do
   end
 
   before_build do |visit|
-    visit.arrived_at = Time.current
+    visit.arrived_at ||= Time.current
   end
 
   member_action :finish, method: :put do
