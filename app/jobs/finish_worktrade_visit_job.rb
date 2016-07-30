@@ -10,7 +10,7 @@ FinishWorktradeVisitJob = Struct.new(:visit_id) do
 
     if visit.customer.email.present?
       VisitMailer.worktrade_receipt(visit).deliver_now
-    elsif visit.customer.number.present?
+    elsif visit.customer.phone.present?
       VisitTexter.worktrade_receipt(visit)
     end
   end
