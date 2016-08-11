@@ -1,4 +1,6 @@
 ActiveAdmin.register Purchase do
+  decorate_with PurchaseDecorator
+
   menu priority: 3
 
   belongs_to :customer
@@ -11,11 +13,27 @@ ActiveAdmin.register Purchase do
 
     inputs 'Details' do
       input :description
-      input :cost, label: 'Hours used'
+      input :cost_dollars, label: '$'
+      input :cost_hours, label: 'Hours used'
     end
     actions
   end
 
-  permit_params :cost, :description
+  index download_links: false, title: proc { "#{@customer.name}'s purchases" } do
+    column :description
+    column :cost_hours
+    column :cost_dollars
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :description
+      row :cost_dollars
+      row :cost_hours
+    end
+  end
+
+  permit_params :cost_dollars, :cost_hours, :description
 end
 
