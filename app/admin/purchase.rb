@@ -20,6 +20,7 @@ ActiveAdmin.register Purchase do
   end
 
   index download_links: false, title: proc { "#{@customer.name}'s purchases" } do
+    column :purchased_at
     column :description
     column :cost_hours
     column :cost_dollars
@@ -28,6 +29,7 @@ ActiveAdmin.register Purchase do
 
   show do
     attributes_table do
+      row :purchased_at
       row :description
       row :cost_dollars
       row :cost_hours
