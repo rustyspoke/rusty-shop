@@ -22,7 +22,7 @@ class Customer < ActiveRecord::Base
     visits.work_trade.total_duration
   end
 
-  def total_purchases_cost
-    purchases.total_cost
+  def total_purchases_cost_hours
+    purchases.total_cost_hours
   end
 end

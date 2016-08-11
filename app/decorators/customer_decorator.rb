@@ -32,7 +32,7 @@ class CustomerDecorator < Draper::Decorator
 
   def work_trade_available
     return nil unless object.visits.work_trade.present?
-    h.format_duration(object.total_work_trade_duration - object.total_purchases_cost)
+    h.format_duration(object.total_work_trade_duration - object.total_purchases_cost_hours)
   end
 
 end
