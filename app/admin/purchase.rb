@@ -13,7 +13,8 @@ ActiveAdmin.register Purchase do
 
     inputs 'Details' do
       input :description
-      input :cost_dollars, label: '$'
+      input :cost_cash_dollars, label: '$ (cash)'
+      input :cost_square_dollars, label: '$ (square)'
       input :cost_hours, label: 'Hours used'
     end
     actions
@@ -23,7 +24,8 @@ ActiveAdmin.register Purchase do
     column :purchased_at
     column :description
     column :cost_hours
-    column :cost_dollars
+    column :cost_cash_dollars
+    column :cost_square_dollars
     actions
   end
 
@@ -31,11 +33,12 @@ ActiveAdmin.register Purchase do
     attributes_table do
       row :purchased_at
       row :description
-      row :cost_dollars
+      row :cost_cash_dollars
+      row :cost_square_dollars
       row :cost_hours
     end
   end
 
-  permit_params :cost_dollars, :cost_hours, :description
+  permit_params :cost_cash_dollars, :cost_square_dollars, :cost_hours, :description
 end
 

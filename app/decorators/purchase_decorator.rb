@@ -10,9 +10,14 @@ class PurchaseDecorator < Draper::Decorator
     "Purchase of #{object.description}"
   end
 
-  def cost_dollars
-    return nil unless object.cost_cents.to_i > 0
-    h.number_to_currency object.cost_dollars
+  def cost_cash_dollars
+    return nil unless object.cost_cash_cents.to_i > 0
+    h.number_to_currency object.cost_cash_dollars
+  end
+
+  def cost_square_dollars
+    return nil unless object.cost_square_cents.to_i > 0
+    h.number_to_currency object.cost_square_dollars
   end
 
   def cost_hours
