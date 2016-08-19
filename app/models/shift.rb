@@ -6,11 +6,16 @@ class Shift < ActiveRecord::Base
   after_create :enqueue_close_shop
 
   def self.current
-    wday_shifts = {
-      6 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(20)),
-      0 => Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(15)),
-      3 => Tod::Shift.new(Tod::TimeOfDay.new(17), Tod::TimeOfDay.new(20))
-    }
+    wday_shifts = {}
+
+    if ENV['ON_SHIFT']
+      (0..6).each do |wday|
+        wday_shifts[wday] = Tod::Shift.new(Tod::TimeOfDay.new(9), Tod::TimeOfDay.new(23))
+      end
+    else
+      wday_shifts[0] = Tod::Shift.new(Tod::TimeOfDay.new(12), Tod::TimeOfDay.new(15))
+      wday_shifts[3] = Tod::Shift.new(Tod::TimeOfDay.new(17), Tod::TimeOfDay.new(20))
+    end
 
     curr_wday = Date.current.wday
 
