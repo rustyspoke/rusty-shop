@@ -21,6 +21,14 @@ class ShiftDecorator < Draper::Decorator
     "#{day_of_week} #{l object.ending_at, format: :short}"
   end
 
+  def beginning_float
+    h.number_to_currency object.beginning_float
+  end
+
+  def ending_float
+    h.number_to_currency object.ending_float
+  end
+
   def staff_names
     object.admin_users.pluck(:name).to_sentence
   end

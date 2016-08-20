@@ -5,6 +5,9 @@ class Shift < ActiveRecord::Base
 
   after_create :enqueue_close_shop
 
+  monetize :beginning_float_cents, allow_nil: true
+  monetize :ending_float_cents, allow_nil: true
+
   def self.current
     wday_shifts = {}
 
