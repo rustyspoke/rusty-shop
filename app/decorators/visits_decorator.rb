@@ -1,7 +1,7 @@
 class VisitsDecorator < Draper::CollectionDecorator
   def customer_names
     customers = object.includes(:customer).order('customers.name')
-    customers.pluck('customers.name').to_sentence
+    customers.pluck('customers.name').uniq.to_sentence
   end
 
   def customer_count
