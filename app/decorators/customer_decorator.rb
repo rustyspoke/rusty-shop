@@ -30,9 +30,9 @@ class CustomerDecorator < Draper::Decorator
     date == Date.current ? 'Today' : h.l(date)
   end
 
-  def work_trade_available
-    return nil unless object.visits.work_trade.present?
-    h.format_duration(object.total_work_trade_duration - object.total_purchases_cost_hours)
+  def work_trade
+    negative = object.work_trade.negative?
+    (negative ? 'Owes ' : 'Has ') + object.work_trade.format('%h %~h and %m %~m')
   end
 
 end

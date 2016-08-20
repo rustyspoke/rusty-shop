@@ -6,9 +6,9 @@ ActiveAdmin.register Purchase do
   belongs_to :customer
   config.batch_actions = false
 
-  form title: 'Visit' do |f|
-    panel 'Work trade available' do
-      f.object.customer.decorate.work_trade_available
+  form do |f|
+    panel 'Work trade' do
+      f.object.customer.decorate.work_trade
     end
 
     inputs 'Details' do

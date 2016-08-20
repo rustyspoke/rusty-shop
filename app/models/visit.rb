@@ -24,7 +24,7 @@ class Visit < ActiveRecord::Base
   end
 
   def self.total_duration
-    sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f.seconds
+    Duration.new seconds: sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f
   end
 
   def end_now
@@ -44,7 +44,7 @@ class Visit < ActiveRecord::Base
   end
 
   def duration
-    ((departed_at || Time.current) - arrived_at).seconds
+    Duration.new seconds: ((departed_at || Time.current) - arrived_at)
   end
 
   private

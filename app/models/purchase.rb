@@ -1,4 +1,6 @@
 class Purchase < ActiveRecord::Base
+  TIME_PARTS = %I(hours minutes seconds).freeze
+
   belongs_to :customer
   has_paper_trail
 
@@ -6,7 +8,11 @@ class Purchase < ActiveRecord::Base
   monetize :cost_square_cents
 
   def self.total_cost_hours
-    sum('extract(epoch from cost_hours)').to_f.seconds
+    Duration.new seconds: sum('extract(epoch from cost_hours)').to_f
+  end
+
+  def cost_hours
+    Duration.new Hash[TIME_PARTS.zip read_attribute(:cost_hours).split(':')]
   end
 
   def cost_hours=(cost)

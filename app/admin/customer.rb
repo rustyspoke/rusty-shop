@@ -27,7 +27,7 @@ ActiveAdmin.register Customer do
   show do
     attributes_table do
       row :latest_visit
-      row :work_trade_available
+      row :work_trade
       row :email
       row :phone
     end

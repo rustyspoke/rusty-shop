@@ -25,4 +25,8 @@ class Customer < ActiveRecord::Base
   def total_purchases_cost_hours
     purchases.total_cost_hours
   end
+
+  def work_trade
+    total_work_trade_duration - total_purchases_cost_hours
+  end
 end

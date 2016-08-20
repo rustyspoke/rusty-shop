@@ -19,8 +19,8 @@ class PurchaseDecorator < Draper::Decorator
   end
 
   def cost_hours
-    return nil if object.cost_hours == '00:00:00'
-    object.cost_hours
+    return nil unless object.cost_hours.present?
+    object.cost_hours.format '%h %~h and %m %~m'
   end
 end
 

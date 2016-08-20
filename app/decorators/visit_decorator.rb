@@ -21,7 +21,7 @@ class VisitDecorator < Draper::Decorator
   end
 
   def duration
-    h.format_duration model.duration
+    model.duration.format '%h %~h and %m %~m'
   end
 
   def toolbox

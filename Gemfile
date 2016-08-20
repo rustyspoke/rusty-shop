@@ -31,6 +31,7 @@ gem 'formtastic', '~> 3.0'
 gem 'active_admin_datetimepicker'
 gem 'twilio-ruby', '~> 4.11.1'
 gem 'money-rails'
+gem 'ruby-duration'
 
 gem 'tod'
 

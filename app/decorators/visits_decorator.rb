@@ -8,8 +8,8 @@ class VisitsDecorator < Draper::CollectionDecorator
     object.includes(:customer).count('distinct customer_id')
   end
 
-  def work_trade_earned
-    h.format_duration object.work_trade.total_duration
+  def work_trade
+    object.work_trade.total_duration.format('%h %~h and %m %~m')
   end
 
   def worktrade_customer_names
