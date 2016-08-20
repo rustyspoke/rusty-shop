@@ -7,9 +7,10 @@ ActiveAdmin.register Shift do
 
   index do
     column :beginning_at
-    column :ending_at
+    column :ending_at_time
     column :beginning_float
     column :ending_float
+    column :staff_names
     actions
   end
 
@@ -19,6 +20,7 @@ ActiveAdmin.register Shift do
       row :ending_at
       row :beginning_float
       row :ending_float
+      row :staff_names
     end
     active_admin_comments
   end
