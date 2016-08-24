@@ -30,9 +30,17 @@ class CustomerDecorator < Draper::Decorator
     date == Date.current ? 'Today' : h.l(date)
   end
 
-  def work_trade
+  def work_trade(third_person = true)
     negative = object.work_trade.negative?
-    (negative ? 'Owes ' : 'Has ') + object.work_trade.format('%h %~h and %m %~m')
+    "#{work_trade_verb third_person, negative}  #{object.work_trade.format('%h %~h and %m %~m')}"
+  end
+
+  def work_trade_verb(third_person, is_negative)
+    if third_person
+      is_negative ? 'Owes' : 'Has'
+    else
+      is_negative ? 'Owe' : 'Have'
+    end
   end
 
 end

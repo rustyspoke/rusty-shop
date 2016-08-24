@@ -13,7 +13,7 @@ class VisitTexter
     their_number = visit.customer.phone
     client.messages.create from: our_number, to: their_number, body: <<-BODY.strip_heredoc
     Receipt for #{@visit.duration} worktrade at Rusty Spoke on #{@visit.date}.
-    You have #{@customer.work_trade_available} total.
+    You #{@customer.work_trade false}.
     Ask staff if incorrect.
     BODY
   end
