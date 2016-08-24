@@ -12,6 +12,6 @@ CloseShopJob = Struct.new(:shift_id) do
   end
 
   def end_ongoing_visits
-    Visit.ongoing.each(&:end_now)
+    Visit.ongoing.each(&:shop_closed)
   end
 end

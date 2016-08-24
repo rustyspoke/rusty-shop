@@ -27,8 +27,9 @@ class Visit < ActiveRecord::Base
     Duration.new seconds: sum('extract(epoch from coalesce(departed_at, CURRENT_TIMESTAMP) - arrived_at)').to_f
   end
 
-  def end_now
-    update_attributes departed_at: Time.current
+  def shop_closed
+    return if departed_at.present?
+    update_attributes departed_at: shifts.last.ending_at
   end
 
   def name
