@@ -36,4 +36,10 @@ class ShiftDecorator < Draper::Decorator
   def staff_names
     object.admin_users.pluck(:name).to_sentence
   end
+
+  def warnings
+    return nil unless beginning_float_cents.nil?
+
+    "Please set shift beginning cash float #{h.link_to 'here', h.admin_shift_path(object)}.".html_safe
+  end
 end
