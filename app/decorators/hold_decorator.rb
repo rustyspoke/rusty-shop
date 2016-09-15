@@ -3,6 +3,10 @@ class HoldDecorator < Draper::Decorator
 
   delegate :name, to: :customer, prefix: true
 
+  def title
+    "#{customer_name}'s hold (#{object.description})"
+  end
+
   def name
     "#{object.description} (#{object.tag})"
   end

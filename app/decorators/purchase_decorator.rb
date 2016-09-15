@@ -1,5 +1,12 @@
 class PurchaseDecorator < Draper::Decorator
+  decorates_association :customer
   delegate_all
+
+  delegate :name, to: :customer, prefix: true
+
+  def title
+    "#{customer_name}'s purchase (#{object.description})"
+  end
 
   def purchased_at
     return nil unless object.created_at.present?
