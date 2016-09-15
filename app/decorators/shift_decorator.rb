@@ -22,7 +22,7 @@ class ShiftDecorator < Draper::Decorator
   end
 
   def ending_at_time
-    object.ending_at.strftime '%H:%m'
+    object.ending_at.strftime '%H:%M'
   end
 
   def beginning_float
