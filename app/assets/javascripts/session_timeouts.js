@@ -1,16 +1,20 @@
-var updateLogoutTime = function() {
+var updateLogoutTime = function(pollMs) {
   setTimeout(function(){
     $.get('/session_timeout.json', function(data, status){
-      $('#logout a').html('Logout (in ' + data.time_left + 's)');
-      updateLogoutTime();
+      var timeLeft = data.time_left;
+      var time = (timeLeft > 60) ? (Math.round(timeLeft / 60) + ' min') : (timeLeft + ' s')
+
+      $('#logout a').html('Logout (in about ' + time + ')');
+      var pollMs = (data.time_left > 60) ? 10000 : 1000;
+      updateLogoutTime(pollMs);
     }).fail(function(response) {
       if(response.status == 401) {
         location.reload();
       }
     });
-  }, 1000);
+  }, pollMs);
 }
 
 $(document).ready(function() {
-  updateLogoutTime();
+  updateLogoutTime(0);
 });
