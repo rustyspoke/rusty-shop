@@ -11,9 +11,10 @@ class Visit < ActiveRecord::Base
 
   has_and_belongs_to_many :shifts
 
-  validates :reason, presence: true
+  validates :arrived_at, :reason, presence: true
   validate :only_one_ongoing, on: :create
   validate :only_one_toolbox, on: :create
+  validate :depart_after_create
 
   def self.ongoing
     where departed_at: nil
@@ -59,6 +60,11 @@ class Visit < ActiveRecord::Base
 
     other_visit = Visit.ongoing.find_by toolbox: toolbox
     errors.add :toolbox, "is currently checked out by #{other_visit.customer.name}" if other_visit.present?
+  end
+
+  def depart_after_create
+    is_impossible = (departed_at || Time.current) < arrived_at
+    errors.add :departed_at, 'cannot be after arrived at' if is_impossible
   end
 
   def enqueue_finish_visit_job
