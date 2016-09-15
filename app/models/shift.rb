@@ -34,6 +34,6 @@ class Shift < ActiveRecord::Base
   private
 
   def enqueue_close_shop
-    Delayed::Job.enqueue CloseShopJob.new(self.id), run_at: ending_at
+    Delayed::Job.enqueue CloseShopJob.new(self.id), run_at: (ending_at + 30.minutes)
   end
 end
