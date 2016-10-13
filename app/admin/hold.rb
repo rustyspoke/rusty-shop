@@ -40,7 +40,7 @@ ActiveAdmin.register Hold do
     redirect_to new_admin_customer_purchase_path(purchase: new_purchase)
   end
 
-  action_item :claim, only: [:show, :edit]  do
+  action_item :claim, only: [:show, :edit], if: proc { hold.still_held? } do
     link_to 'Customer claimed', claim_admin_customer_hold_path(id: hold.id), method: :put
   end
 
@@ -49,7 +49,7 @@ ActiveAdmin.register Hold do
     redirect_to admin_customer_holds_path(id: resource.id)
   end
 
-  action_item :release, only: [:show, :edit] do
+  action_item :release, only: [:show, :edit], if: proc { hold.still_held? } do
     link_to 'Release back', release_admin_customer_hold_path(id: hold.id), method: :put
   end
 
