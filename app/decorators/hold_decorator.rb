@@ -13,11 +13,11 @@ class HoldDecorator < Draper::Decorator
 
   def status
     if claimed_at.present?
-      "Claimed on #{h.l Time.parse(claimed_at).to_date, format: :short}"
+      "<b>Claimed</b> on #{h.l Time.parse(claimed_at).to_date, format: :short}".html_safe
     elsif released_at.present?
-      "Released on #{h.l Time.parse(released_at).to_date, format: :short}"
+      "<b>Released</b> on #{h.l Time.parse(released_at).to_date, format: :short}".html_safe
     else
-      "Held since #{h.l created_at.to_date, format: :short}"
+      "Held since #{h.l created_at.to_date, format: :short}".html_safe
     end
   end
 end

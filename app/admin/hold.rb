@@ -26,6 +26,12 @@ ActiveAdmin.register Hold do
   end
 
   form title: 'Hold item' do |f|
+    if f.object.persisted?
+      panel 'Status' do
+        f.object.decorate.status
+      end
+    end
+
     inputs 'Details' do
       input :kind, as: :select, collection: %w(Bike Part), include_blank: false
       input :tag
@@ -36,6 +42,7 @@ ActiveAdmin.register Hold do
 
   member_action :claim, method: :put do
     resource.update_attribute :claimed_at, Time.current
+    flash[:info] = resource.status
     new_purchase = {customer: resource.customer, description: resource.description}
     redirect_to new_admin_customer_purchase_path(purchase: new_purchase)
   end
