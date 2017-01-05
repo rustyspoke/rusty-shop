@@ -24,6 +24,7 @@ gem 'switch_user'
 gem 'paper_trail', '~> 5.1.1'
 
 gem 'delayed_job_active_record'
+gem 'airbrake', '~> 5.4'
 
 gem 'friendly_id', '~> 5.1.0'
 gem 'draper', '~> 1.3'
