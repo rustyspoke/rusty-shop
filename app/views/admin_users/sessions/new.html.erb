@@ -1,4 +1,4 @@
-<% AdminUser.all.order('name').each do |admin| %>
+<% AdminUser.all.where(hidden: false).order('name').each do |admin| %>
   <p>
     <%= link_to admin.name, "/switch_user?scope_identifier=admin_user_#{admin.id}", class: 'switch-user' %>
   </p>

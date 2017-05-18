@@ -4,7 +4,7 @@ services:
     build:
       context: .
     ports:
-      - "3000:3000"
+      - "3444:3000"
     volumes:
       - .:/usr/src/app
     working_dir: '/usr/src/app'
@@ -17,4 +17,4 @@ services:
   postgres:
     image: postgres:9.5
     ports:
-      - "5435:5432"
+      - "5444:5432"
