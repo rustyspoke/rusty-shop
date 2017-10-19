@@ -3,7 +3,7 @@ ActiveAdmin.register Purchase do
 
   menu priority: 3
 
-  belongs_to :customer
+  belongs_to :customer, optional: true
   config.batch_actions = false
 
   form do |f|
@@ -20,7 +20,12 @@ ActiveAdmin.register Purchase do
     actions
   end
 
-  index download_links: false, title: proc { "#{@customer.name}'s purchases" } do
+  filter :purchased_at
+  filter :description
+  filter :created_at
+  filter :customer, collection: proc { Customer.order(:name) }
+
+  index download_links: false, title: proc { @customer ? "#{@customer.name}'s) purchases" : 'All purchases' } do
     column :purchased_at
     column :description
     column :cost_hours
