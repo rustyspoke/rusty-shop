@@ -1,8 +1,12 @@
 class ShiftDecorator < Draper::Decorator
   delegate_all
 
+  def name
+    "#{beginning_at} shift"
+  end
+
   def title
-    "#{beginning_at} shift with #{staff_names}"
+    "#{name} with #{staff_names}"
   end
 
   def date
