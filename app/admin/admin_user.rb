@@ -1,11 +1,18 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register AdminUser, as: 'User' do
   filter :name
 
-  actions :all, except: [:show, :edit]
+  actions :all, except: [:show, :edit, :destroy]
+  config.batch_actions = false
 
   index do
     column :name
-    actions
+    actions do |admin_user|
+      if admin_user.hidden
+        link_to 'Unhide', unhide_admin_user_path(admin_user), method: :put
+      else
+        link_to 'Hide', hide_admin_user_path(admin_user), method: :put
+      end
+    end
   end
 
   form do |f|
@@ -17,4 +24,14 @@ ActiveAdmin.register AdminUser do
   end
 
   permit_params :name, :email
+
+  member_action :hide, method: :put do
+    resource.update hidden: true
+    redirect_to admin_users_path
+  end
+
+  member_action :unhide, method: :put do
+    resource.update hidden: false
+    redirect_to admin_users_path
+  end
 end

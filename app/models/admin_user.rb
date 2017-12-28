@@ -7,6 +7,6 @@ class AdminUser < ActiveRecord::Base
   has_and_belongs_to_many :shifts
 
   before_validation do
-    self.password = 'password'
+    self.password ||= 'password'
   end
 end
