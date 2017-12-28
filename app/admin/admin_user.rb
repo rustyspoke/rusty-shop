@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser, as: 'User' do
   filter :name
 
-  actions :all, except: [:show, :edit, :destroy]
+  actions :all, except: [:show, :destroy]
   config.batch_actions = false
 
   index do
