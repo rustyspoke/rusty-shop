@@ -9,4 +9,7 @@ class AdminUser < ActiveRecord::Base
   before_validation do
     self.password ||= 'password'
   end
+
+  scope :hidden, -> { where hidden: true }
+  scope :active, -> { where hidden: false }
 end
