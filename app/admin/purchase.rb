@@ -45,5 +45,18 @@ ActiveAdmin.register Purchase do
   end
 
   permit_params :cost_cash, :cost_square, :cost_hours, :description
+
+  controller do
+    before_filter :ensure_customer, only: [:new]
+
+    private
+
+    def ensure_customer
+      return if parent.present? && parent.is_a?(Customer)
+
+      flash[:error] = 'Create purchase from customer page'
+      redirect_to admin_customers_path
+    end
+  end
 end
 
