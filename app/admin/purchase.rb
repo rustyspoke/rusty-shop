@@ -6,7 +6,7 @@ ActiveAdmin.register Purchase do
   belongs_to :customer, optional: true
   config.batch_actions = false
 
-  form do |f|
+  form decorate: true do |f|
     panel 'Work trade' do
       f.object.customer.decorate.work_trade
     end
