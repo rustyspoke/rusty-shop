@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>4.2'
+gem 'rails', '4.2.5.2'
 
 gem 'pg'
 gem 'scenic'
@@ -24,7 +24,6 @@ gem 'switch_user'
 gem 'paper_trail', '~> 5.1.1'
 
 gem 'delayed_job_active_record'
-gem 'delayed-web'
 gem 'airbrake', '~> 5.4'
 
 gem 'friendly_id', '~> 5.1.0'

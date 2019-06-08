@@ -3,10 +3,10 @@ ActiveAdmin.register Purchase do
 
   menu priority: 3
 
-  belongs_to :customer, optional: true
+  belongs_to :customer
   config.batch_actions = false
 
-  form decorate: true do |f|
+  form do |f|
     panel 'Work trade' do
       f.object.customer.decorate.work_trade
     end
@@ -20,12 +20,7 @@ ActiveAdmin.register Purchase do
     actions
   end
 
-  filter :purchased_at
-  filter :description
-  filter :created_at
-  filter :customer, collection: proc { Customer.order(:name) }
-
-  index download_links: false, title: proc { @customer ? "#{@customer.name}'s) purchases" : 'All purchases' } do
+  index download_links: false, title: proc { "#{@customer.name}'s purchases" } do
     column :purchased_at
     column :description
     column :cost_hours
@@ -45,18 +40,5 @@ ActiveAdmin.register Purchase do
   end
 
   permit_params :cost_cash, :cost_square, :cost_hours, :description
-
-  controller do
-    before_filter :ensure_customer, only: [:new]
-
-    private
-
-    def ensure_customer
-      return if parent.present? && parent.is_a?(Customer)
-
-      flash[:error] = 'Create purchase from customer page'
-      redirect_to admin_customers_path
-    end
-  end
 end
 

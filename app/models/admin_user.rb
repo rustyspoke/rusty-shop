@@ -5,11 +5,4 @@ class AdminUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
   has_and_belongs_to_many :shifts
-
-  before_validation do
-    self.password ||= 'password'
-  end
-
-  scope :hidden, -> { where hidden: true }
-  scope :active, -> { where hidden: false }
 end

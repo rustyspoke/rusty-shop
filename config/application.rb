@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module RustyShop
   class Application < Rails::Application
-    config.assets.precompile << 'delayed/web/application.css'
     config.active_record.raise_in_transactional_callbacks = true
 
     config.time_zone = 'Arizona'

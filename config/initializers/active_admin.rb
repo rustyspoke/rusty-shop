@@ -259,6 +259,4 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-  #
-  config.before_filter :set_admin_locale
 end

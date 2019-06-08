@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Delayed::Web::Engine, at: '/jobs'
   mount Lockup::Engine, at: '/lockup'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
